@@ -4,6 +4,8 @@
 
 Currently support syntax highlighting.
 
+![preview](doc/l65.png)
+
 ## Classes
 
 These classes are defined and should be set in settings.json:
@@ -11,7 +13,6 @@ These classes are defined and should be set in settings.json:
  * entity.name.type.l65
  * keyword.operator.l65
  * keyword.control.l65
- * constant.numeric.l65
  * punctuation.separator.label.l65
  * entity.name.label.l65
  * punctuation.separator.label.l65.local
@@ -21,7 +22,7 @@ These classes are defined and should be set in settings.json:
  * meta.preprocessor.l65
 
 
-Also added missing labels from standard Lua:
+Also added missing labels for standard Lua:
 
  * punctuation.separator.label.lua
  * entity.name.label.lua
