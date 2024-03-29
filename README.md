@@ -107,6 +107,14 @@ Here's my tokenColorCustomizations section:
             },
             {
                 "scope": [
+                    "entity.name.function.l65",
+                ],
+                "settings": {
+                    "foreground": "#5fcfaf",
+                },
+            },
+            {
+                "scope": [
                     "meta.preprocessor.l65",
                 ],
                 "settings": {

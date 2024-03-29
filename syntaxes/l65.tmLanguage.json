@@ -33,6 +33,9 @@
 					"include": "#l65-operator"
 				},
 				{
+					"include": "#l65-datafn"
+				},
+				{
 					"include": "#l65-keyword"
 				},
 				{
@@ -705,9 +708,13 @@
 			"name": "keyword.operator.l65",
 			"match": "(#|\\!|\\\\)"
 		},
+		"l65-datafn": {
+			"name": "entity.name.function.l65",
+			"match": "\\b(charset|byte|byte_hi|byte_lo|word)\\b"
+		},
 		"l65-keyword": {
 			"name": "keyword.control.l65",
-			"match": "\\b(location|section|charset|byte|byte_hi|byte_lo|word)\\b"
+			"match": "\\b(location|section)\\b"
 		},
 		"l65-keyword-opcodefn": {
 			"name": "entity.name.function.l65",
