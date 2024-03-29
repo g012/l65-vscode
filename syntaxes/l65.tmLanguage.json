@@ -21,7 +21,46 @@
 					"include": "#block-comment"
 				},
 				{
+					"include": "#l65-preproc"
+				},
+				{
+					"include": "#label"
+				},
+				{
+					"include": "#section"
+				},
+				{
+					"include": "#l65-operator"
+				},
+				{
+					"include": "#l65-keyword"
+				},
+				{
+					"include": "#l65-keyword-opcodefn"
+				},
+				{
+					"include": "#l65-keyword-opcodefn-illegal"
+				},
+				{
+					"include": "#l65-keyword-opcodefn-alias"
+				},
+				{
+					"include": "#opcodes"
+				},
+				{
+					"include": "#opcodes-illegal"
+				},
+				{
+					"include": "#opcodes-crossbank"
+				},
+				{
+					"include": "#opcodes-alias"
+				},
+				{
 					"include": "#number"
+				},
+				{
+					"include": "#binary-number"
 				},
 				{
 					"include": "#constant"
@@ -94,12 +133,6 @@
 				},
 				{
 					"include": "#variable"
-				},
-				{
-					"include": "#label"
-				},
-				{
-					"include": "#section"
 				}
 			]
 		},
@@ -133,7 +166,11 @@
 		},
 		"number": {
 			"name": "constant.numeric.lua",
-			"match": "(?<![\\d.])\\b0x[a-fA-F\\d]+|\\b\\d+(\\.\\d+)?([eE]-?\\d+)?|\\.\\d+([eE]-?\\d+)?"
+			"match": "(?<![\\d.])\\b0[xX][a-fA-F\\d]+|\\b\\d+(\\.\\d+)?([eE]-?\\d+)?|\\.\\d+([eE]-?\\d+)?"
+		},
+		"binary-number": {
+			"name": "constant.numeric.l65",
+			"match": "(?<![\\d.])\\b0[bB][01]+"
 		},
 		"single-quote-string": {
 			"name": "string.quoted.single.lua",
@@ -537,7 +574,7 @@
 		},
 		"support-variable": {
 			"name": "support.variable.lua",
-			"match": "\\b(assert|collectgarbage|dofile|error|getfenv|getmetatable|ipairs|loadfile|loadstring|module|next|pairs|pcall|print|rawequal|rawget|rawset|require|select|setfenv|setmetatable|tonumber|tostring|type|unpack|xpcall|coroutine|string|table|math|io|os|package|debug)\\b"
+			"match": "\\b(assert|bit32|collectgarbage|dofile|error|getfenv|getmetatable|ipairs|loadfile|loadstring|module|next|pairs|pcall|print|rawequal|rawget|rawset|require|select|setfenv|setmetatable|tonumber|tostring|type|unpack|xpcall|coroutine|string|table|math|io|os|package|debug)\\b"
 		},
 		"variable": {
 			"name": "variable.other.lua",
@@ -597,6 +634,46 @@
 					}
 				}
 			]
+		},
+		"l65-preproc": {
+			"name": "meta.preprocessor.l65",
+			"match": "^(\\s*#\\s*pragma.*)$\n?"
+		},
+		"l65-operator": {
+			"name": "keyword.operator.l65",
+			"match": "(#|\\!|\\\\)"
+		},
+		"l65-keyword": {
+			"name": "keyword.control.l65",
+			"match": "\\b(location|section|charset|byte|byte_hi|byte_lo|word)\\b"
+		},
+		"l65-keyword-opcodefn": {
+			"name": "keyword.control.l65",
+			"match": "\\b(adcimm|adczpg|adczpx|adcabs|adcabx|adcaby|adczab|adczax|adcinx|adciny|andimm|andzpg|andzpx|andabs|andabx|andaby|andzab|andzax|andinx|andiny|aslimp|aslzpg|aslzpx|aslabs|aslabx|aslzab|aslzax|bccrel|bcsrel|beqrel|bitzpg|bitabs|bitzab|bmirel|bnerel|bplrel|brkimp|bvcrel|bvsrel|clcimp|cldimp|cliimp|clvimp|cmpimm|cmpzpg|cmpzpx|cmpabs|cmpabx|cmpaby|cmpzab|cmpzax|cmpinx|cmpiny|cpximm|cpxzpg|cpxabs|cpxzab|cpyimm|cpyzpg|cpyabs|cpyzab|deczpg|deczpx|decabs|decabx|deczab|deczax|deximp|deyimp|eorimm|eorzpg|eorzpx|eorabs|eorabx|eoraby|eorzab|eorzax|eorinx|eoriny|inczpg|inczpx|incabs|incabx|inczab|inczax|inximp|inyimp|jmpabs|jmpind|jsrabs|ldaimm|ldazpg|ldazpx|ldaabs|ldaabx|ldaaby|ldazab|ldazax|ldainx|ldainy|ldximm|ldxzpg|ldxzpy|ldxabs|ldxaby|ldxzab|ldxzay|ldyzpg|ldyzpx|ldyabs|ldyabx|ldyzab|ldyzax|lsrimp|lsrzpg|lsrzpx|lsrabs|lsrabx|lsrzab|lsrzax|nopimp|oraimm|orazpg|orazpx|oraabs|oraabx|oraaby|orazab|orazax|orainx|orainy|phaimp|phpimp|plaimp|plpimp|rolimp|rolzpg|rolzpx|rolabs|rolabx|rolzab|rolzax|rorimp|rorzpg|rorzpx|rorabs|rorabx|rorzab|rorzax|rtiimp|rtsimp|sbcimm|sbczpg|sbczpx|sbcabs|sbcabx|sbcaby|sbczab|sbczax|sbcinx|sbciny|secimp|sedimp|seiimp|stazpg|stazpx|staabs|staabx|staaby|stazab|stazax|stainx|stainy|stxzpg|stxzpy|stxabs|stxzab|styzpg|styzpx|styabs|styzab|taximp|tayimp|tsximp|txaimp|txsimp|tyaimp)\\b"
+		},
+		"l65-keyword-opcodefn-illegal": {
+			"name": "keyword.control.l65",
+			"match": "\\b(ancimm|aneimm|arrimm|asrimm|dcpzpg|dcpzpx|dcpabs|dcpabx|dcpaby|dcpinx|dcpiny|isbzpg|isbzpx|isbabs|isbabx|isbaby|isbinx|isbiny|jamimp|lasaby|laxzpg|laxzpy|laxabs|laxaby|laxinx|laxiny|nopimm|nopzpg|nopzpx|nopabs|nopabx|rlazpg|rlazpx|rlaabs|rlaabx|rlaaby|rlainx|rlainy|rrazpg|rrazpx|rraabs|rraabx|rraaby|rrainx|rrainy|saxzpg|saxzpy|saxabs|saxinx|sbximm|shaaby|shainy|shsaby|shxaby|shyabx|slozpg|slozpx|sloabs|sloabx|sloaby|sloinx|sloiny|srezpg|srezpx|sreabs|sreabx|sreaby|sreinx|sreiny)\\b"
+		},
+		"l65-keyword-opcodefn-alias": {
+			"name": "keyword.control.l65",
+			"match": "\\b(dnaimm|dnazpg|dnazpx|dnaabs|dnaabx|dnaaby|dnazab|dnazax|dnainx|dnainy)\\b"
+		},
+		"opcodes": {
+			"name": "entity.name.type.l65",
+			"match": "\\b((dc\\.[bwl])|(adc(\\.[bw])?)|(and(\\.[bw])?)|(asl(\\.[bw])?)|bcc|bcs|beq|(bit(\\.[bw])?)|bmi|bne|bpl|brk|bvc|bvs|clc|cld|cli|clv|(cmp(\\.[bw])?)|(cpx(\\.[bw])?)|(cpy(\\.[bw])?)|(dec(\\.[bw])?)|dex|dey|(eor(\\.[bw])?)|(inc(\\.[bw])?)|inx|iny|jmp|jsr|(lda(\\.[bw])?)|(ldx(\\.[bw])?)|(ldy(\\.[bw])?)|(lsr(\\.[bw])?)|(nop(\\.[bw])?)|(ora(\\.[bw])?)|pha|php|pla|plp|(rol(\\.[bw])?)|(ror(\\.[bw])?)|rti|rts|(sbc(\\.[bw])?)|sec|sed|sei|(sta(\\.[bw])?)|(stx(\\.[bw])?)|(sty(\\.[bw])?)|tax|tay|tsx|txa|txs|tya)\\b"
+		},
+		"opcodes-illegal": {
+			"name": "entity.name.type.l65",
+			"match": "\\b(anc|ane|arr|asr|(dcp(\\.[bw])?)|(isb(\\.[bw])?)|jam|las|(lax(\\.[bw])?)|(rla(\\.[bw])?)|(rra(\\.[bw])?)|(sax(\\.[bw])?)|sbx|sha|shs|shx|shy|(slo(\\.[bw])?)|(sre(\\.[bw])?))\\b"
+		},
+		"opcodes-crossbank": {
+			"name": "entity.name.type.l65",
+			"match": "\\b(far|rtx|xsr)\\b"
+		},
+		"opcodes-alias": {
+			"name": "entity.name.type.l65",
+			"match": "\\b((dna(\\.[bw])?))\\b"
 		}
 	}
 }
