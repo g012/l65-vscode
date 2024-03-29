@@ -3,6 +3,9 @@
   "displayName": "l65",
   "description": "Provides syntax highlighting for l65",
   "version": "0.0.1",
+  "repository": {
+    "url": "https://github.com/g012/l65-vscode"
+  },
   "engines": {
     "vscode": "^1.87.0"
   },

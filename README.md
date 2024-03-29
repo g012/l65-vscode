@@ -2,7 +2,7 @@
 
 ## Features
 
-Currently support syntax highlighting.
+Currently supports syntax highlighting.
 
 ![preview](doc/l65.png)
 
