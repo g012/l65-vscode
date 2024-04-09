@@ -144,13 +144,13 @@
 		},
 		"line-comment": {
 			"name": "comment.line.double-dash.lua",
-			"begin": "(--)",
+			"begin": "(--)(?!(\\[=*\\[|\\]=*\\]))",
 			"beginCaptures": {
 				"1": {
 					"name": "punctuation.definition.comment.lua"
 				}
 			},
-			"end": "($)",
+			"end": "($)\n?",
 			"patterns": [
 				{
 					"include": "#codetags"
